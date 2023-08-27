@@ -1,17 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
+import { IProperty } from '../IProperty.Interface';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Component({
   selector: 'app-property-card',
   templateUrl: './property-card.component.html',
   styleUrls: ['./property-card.component.css']
 })
-export class PropertyCardComponent {
+export class PropertyCardComponent implements OnChanges{
+  @Input() property!: IProperty;
 
-  property: any = {
-    "Id":1,
-    "Name":"Sahil",
-    "Type":"Flat",
-    "Price":12000
+  ngOnChanges(){
+    console.log('2',this.property);
   }
-
 }
