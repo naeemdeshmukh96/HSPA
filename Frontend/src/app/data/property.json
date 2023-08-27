@@ -1,0 +1,26 @@
+[
+  {
+    "Id":1,
+    "Name":"AD",
+    "Type":"Flat",
+    "Price":12000
+  },
+  {
+    "Id":2,
+    "Name":"AB",
+    "Type":"Flat",
+    "Price":12000
+  },
+  {
+    "Id":3,
+    "Name":"ND",
+    "Type":"Flat",
+    "Price":12000
+  },
+  {
+    "Id":4,
+    "Name":"SD",
+    "Type":"Flat",
+    "Price":12000
+  }
+]
