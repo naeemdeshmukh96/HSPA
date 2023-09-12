@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-property-details',
@@ -8,10 +8,24 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PropertyDetailsComponent implements OnInit {
   public PropertyId!: number;
-  constructor(private route: ActivatedRoute) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router
+    ) { }
 
   ngOnInit() {
-    this.PropertyId = this.route.snapshot.params["id"]
+    this.PropertyId = +this.route.snapshot.params["id"];
+
+    this.route.params.subscribe(
+      (params) => {
+        this.PropertyId = +params['id'];
+      }
+    )
+  }
+
+  onselectNext(){
+    this.PropertyId += 1;
+    this.router.navigate(['property-details',this.PropertyId ])
   }
 
 }
