@@ -4,7 +4,7 @@ export class Property {
     Id!: number;
     SellRent!: number;
     Name!: string;
-    PType!: number;
+    PType!: string;
     BHK!: number;
     FType!: string;
     Price!: number;
@@ -22,7 +22,7 @@ export class Property {
     Security?: number;
     Gated?: boolean;
     Maintenance?: number;
-    Possesion?: string;
+    Possession?: string;
     Image?: string;
     Description?: string;
     PostedOn!: string;

@@ -2,28 +2,26 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs/internal/Observable';
-import { IProperty } from '../property/IProperty.Interface';
-import { IPropertyBase } from '../model/IPropertyBase';
 import { Property } from '../model/property';
+
 @Injectable({
   providedIn: 'root',
 })
 export class HousingService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  GetProperty(id: number){
+  GetProperty(id: number) {
     return this.GetAllProperties().pipe(
       map(propertiesArray => {
-        console.log('333',propertiesArray);
-        return propertiesArray.find(p => p.id === id);
+        return propertiesArray.find((p) => p.Id == id);
       })
     );
   }
 
-  GetAllProperties(SellRent?: number): Observable<IPropertyBase[]> {
+  GetAllProperties(SellRent?: number): Observable<Property[]> {
     return this.http.get('data/properties.json').pipe(
       map((data) => {
-        const propertiesArray: Array<IPropertyBase> = [];
+        const propertiesArray: Array<Property> = [];
         const localProperties = JSON.parse(
           localStorage.getItem('newProp') as string
         );

@@ -33,7 +33,7 @@
                       *ngFor="let bhk of [1,2,3,4]"
                       class="btn btn-outline-primary mr-2"
                       [btnRadio]="bhk" tabindex="0" role="button"
-                      (click)="propertyView.bhk=bhk"
+                      (click)="propertyView.BHK=bhk"
                       name="BHK">
                       {{bhk}}
                     </label>
@@ -214,13 +214,13 @@
                   formControlName="RTM">
                     <label class="btn btn-outline-primary mr-2"
                       btnRadio=true tabindex="0" role="button"
-                      (click)="propertyView.readyToMove=true"
+                      (click)="propertyView.RTM=true"
                       name="RTM">Yes
                     </label>
 
                     <label class="btn btn-outline-primary"
                       btnRadio=false  tabindex="0" role="button"
-                      (click)="propertyView.readyToMove=false"
+                      (click)="propertyView.RTM=false"
                       name="RTM">No
                     </label>
                   </div>
@@ -231,13 +231,13 @@
 
 
                 <div class="form-group col-6">
-                  <label *ngIf="propertyView.readyToMove">Establishment Date</label>
-                  <label *ngIf="!propertyView.readyToMove">Possession Date</label>
+                  <label *ngIf="propertyView.RTM">Establishment Date</label>
+                  <label *ngIf="!propertyView.RTM">Possession Date</label>
                   <input type="text"
                   class="form-control"
                   formControlName="PossessionOn"
                   #possessionOn
-                  (bsValueChange)="propertyView.estPossessionOn=possessionOn.value"
+                  (bsValueChange)="propertyView.Possession=possessionOn.value"
                   bsDatepicker
                   [bsConfig]="{containerClass: 'theme-dark-blue',
                   dateInputFormat: 'MMM DD, YYYY'}">

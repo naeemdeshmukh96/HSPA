@@ -11,7 +11,7 @@ import { TabsetComponent } from 'ngx-bootstrap/tabs';
 import { IPropertyBase } from 'src/app/model/IPropertyBase';
 import { Property } from 'src/app/model/property';
 import { AlertifyService } from 'src/app/service/alertify.service';
-import { HousingService } from 'src/app/service/housing.service';
+import { HousingService } from 'src/app/service/HousingService';
 
 
 @Component({
@@ -30,16 +30,16 @@ export class AddPropertyComponent implements OnInit {
   furnishedTypes: Array<string> = ['Full', 'Semi', 'Raw'];
 
   propertyView: IPropertyBase = {
-    id: 0,
-    name: '',
-    price: 0,
-    sellRent: 0,
-    propertyType: '',
-    furnishingType: '',
-    bhk: 0,
-    builtArea: 0,
-    city: '',
-    readyToMove: true,
+    Id: 0,
+    Name: '',
+    Price: 0,
+    SellRent: 0,
+    PType: '',
+    FType: '',
+    BHK: 0,
+    BuiltArea: 0,
+    City: '',
+    RTM: true,
   };
 
   nextClicked!: boolean;
@@ -131,7 +131,7 @@ export class AddPropertyComponent implements OnInit {
     this.property.RTM = this.RTM.value;
     this.property.Gated = this.Gated.value;
     this.property.MainEntrance = this.MainEntrance.value;
-    this.property.Possesion = this.PossessionOn.value;
+    this.property.Possession = this.PossessionOn.value;
     this.property.Description = this.Description.value;
     this.property.PostedOn = new Date().toString();
   }

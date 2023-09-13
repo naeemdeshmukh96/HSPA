@@ -6,7 +6,7 @@ import { PropertyCardComponent } from './property/property-card/property-card.co
 import { PropertyListComponent } from './property/property-list/property-list.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HttpClientModule } from '@angular/common/http';
-import { HousingService } from './service/housing.service';
+import { HousingService } from './service/HousingService';
 import { AddPropertyComponent } from './property/add-property/add-property.component';
 import { Routes, RouterModule } from '@angular/router';
 import { RentPropertyComponent } from './property/rent-property/rent-property.component';
@@ -21,13 +21,17 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { PropertyDetailsResolverService } from './property/property-details/property-details-resolver.service';
+import { NgxGalleryModule } from 'ngx-gallery';
 
 const appRoutes: Routes = [
   { path: '', component: PropertyListComponent },
   { path: 'add-property', component: AddPropertyComponent },
   { path: 'add-property', component: AddPropertyComponent },
   { path: 'rent-property', component: RentPropertyComponent },
-  { path: 'property-details/:id', component: PropertyDetailsComponent },
+  { path: 'property-details/:id',
+          component: PropertyDetailsComponent,
+          resolve: {prp: PropertyDetailsResolverService} },
   { path: 'user/register', component: UserRegisterComponent},
   { path: 'user/login', component: UserLoginComponent},
   { path: '**', component: PropertyListComponent}
@@ -62,7 +66,9 @@ const appRoutes: Routes = [
   providers: [
     HousingService,
     UserService,
-    AuthService
+    AuthService,
+    PropertyDetailsResolverService,
+    NgxGalleryModule
   ],
   bootstrap: [AppComponent],
 })
