@@ -22,7 +22,9 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { PropertyDetailsResolverService } from './property/property-details/property-details-resolver.service';
-import { NgxGalleryModule } from 'ngx-gallery';
+import { NgxGalleryModule } from '@kolkov/ngx-gallery';
+import { FilterPipe } from './pipes/filter.pipe';
+import { SortPipe } from './pipes/sort.pipe';
 
 const appRoutes: Routes = [
   { path: '', component: PropertyListComponent },
@@ -47,7 +49,9 @@ const appRoutes: Routes = [
     RentPropertyComponent,
     PropertyDetailsComponent,
     UserRegisterComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    FilterPipe,
+    SortPipe
   ],
   imports: [
     BrowserModule,
@@ -61,14 +65,14 @@ const appRoutes: Routes = [
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     ButtonsModule.forRoot(),
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    NgxGalleryModule
   ],
   providers: [
     HousingService,
     UserService,
     AuthService,
-    PropertyDetailsResolverService,
-    NgxGalleryModule
+    PropertyDetailsResolverService
   ],
   bootstrap: [AppComponent],
 })

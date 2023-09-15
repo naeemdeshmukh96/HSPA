@@ -12,6 +12,10 @@ import { ActivatedRoute, Route } from '@angular/router';
 export class PropertyListComponent implements OnInit {
   properties! : Array<IPropertyBase>;
   SellRent = 1;
+  City = '';
+  searchCity = '';
+  sortByParam = '';
+  SortDirection = 'asc';
 
   constructor(private housingService:HousingService,
     private route:ActivatedRoute) { }
@@ -34,9 +38,22 @@ export class PropertyListComponent implements OnInit {
       }
     );
 
-
-
-
   }
+
+  onFilterSearch(){
+    this.searchCity = this.City;
+  }
+  onFilterClear(){
+    this.searchCity = '';
+    this.City = '';
+  }
+
+  onSortDirection() {
+    if (this.SortDirection === 'desc') {
+        this.SortDirection = 'asc';
+    } else {
+        this.SortDirection = 'desc';
+    }
+}
 
 }

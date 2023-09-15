@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Property } from 'src/app/model/property';
 import { HousingService } from 'src/app/service/HousingService';
+import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from 'ngx-gallery';
 
 @Component({
   selector: 'app-property-details',
@@ -11,6 +12,9 @@ import { HousingService } from 'src/app/service/HousingService';
 export class PropertyDetailsComponent implements OnInit {
   public PropertyId!: number;
   property = new Property();
+
+  galleryOptions!: NgxGalleryOptions[]|any;
+  galleryImages!: NgxGalleryImage[];
 
   constructor(
     private route: ActivatedRoute,
@@ -29,31 +33,48 @@ export class PropertyDetailsComponent implements OnInit {
       }
     );
 
-    // this.route.params.subscribe(
-    //   (params) => {
-    //     this.PropertyId = +params['id'];
-    //     this.housingService.GetProperty(this.PropertyId).subscribe(
-    //       (data) => {
-    //         if(data){
-    //           debugger;
-    //            this.property.Name = data.Name;
-    //            this.property.Price = data.Price;
-    //            this.property.SellRent = data.SellRent;
-    //            this.property.PType = data.PType;
-    //            this.property.FType = data.FType;
-    //            this.property.BHK = data.BHK;
-    //            this.property.BuiltArea = data.BuiltArea;
-    //            this.property.City = data.City;
-    //            this.property.RTM = data.RTM;
-    //            this.property.Possession = data.Possession;
-    //            this.property.Image = data.Image;
-    //         }
-    //       }
-    //     );
-    //   }
-    // )
+    this.carouselInit();
 
   }
 
+  carouselInit(){
+    this.galleryOptions = [
+      {
+        width: '100%',
+        height: '470px',
+        thumbnailsColumns: 4,
+        imageAnimation: NgxGalleryAnimation.Slide
+      }
+    ];
+
+    this.galleryImages = [
+      {
+        small: 'assets/images/prop-1.png',
+        medium: 'assets/images/prop-1.png',
+        big: 'assets/images/prop-1.png'
+      },
+      {
+        small: 'assets/images/prop-2.png',
+        medium: 'assets/images/prop-2.png',
+        big: 'assets/images/prop-2.png'
+      },
+      {
+        small: 'assets/images/prop-3.png',
+        medium: 'assets/images/prop-3.png',
+        big:'assets/images/prop-3.png'
+      },
+      {
+        small: 'assets/images/prop-3.png',
+        medium: 'assets/images/prop-3.png',
+        big:'assets/images/prop-3.png'
+      },
+      {
+        small: 'assets/images/prop-3.png',
+        medium: 'assets/images/prop-3.png',
+        big:'assets/images/prop-3.png'
+      }
+    ];
+
+  }
 
 }
