@@ -20,7 +20,6 @@ import { HousingService } from 'src/app/service/HousingService';
   styleUrls: ['./add-property.component.css'],
 })
 export class AddPropertyComponent implements OnInit {
-  //@ViewChild('Form') addPropertyForm!: NgForm;
   @ViewChild('formTabs') formTabs?: TabsetComponent;
 
   property = new Property();
@@ -28,6 +27,8 @@ export class AddPropertyComponent implements OnInit {
 
   propertyTypes: Array<string> = ['Flat', 'Pent House', 'Bunglow'];
   furnishedTypes: Array<string> = ['Full', 'Semi', 'Raw'];
+
+  CityList!: any[];
 
   propertyView: IPropertyBase = {
     Id: 0,
@@ -51,6 +52,12 @@ export class AddPropertyComponent implements OnInit {
 
   ngOnInit() {
     this.CreateAddPropertyForm();
+    this.housingService.getAllCities().subscribe(
+      data => {
+        this.CityList = data;
+        console.log('this.CityList',this.CityList)
+      }
+    );
   }
 
   CreateAddPropertyForm() {
@@ -61,7 +68,7 @@ export class AddPropertyComponent implements OnInit {
         PType: [null, Validators.required],
         FType: [null, Validators.required],
         Name: [null, Validators.required],
-        City: [null, Validators.required],
+        City: ['', Validators.required],
       }),
 
       PriceInfo: this.fb.group({
