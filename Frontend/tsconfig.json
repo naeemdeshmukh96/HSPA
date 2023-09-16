@@ -25,7 +25,11 @@
     ],
     "noImplicitAny": false,
     "suppressImplicitAnyIndexErrors": true,
-    "ignoreDeprecations": "5.0"
+    "ignoreDeprecations": "5.0",
+    "typeRoots": [
+      "node_modules/@types",
+      "src/alertifytype.d.ts"
+    ]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
